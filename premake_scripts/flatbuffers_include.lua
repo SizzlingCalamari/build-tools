@@ -1,9 +1,9 @@
 
-local base_dir = ...
+local incl_prefix, base_dir = ...
 
 includedirs
 {
-    base_dir .. "/include/"
+    incl_prefix .. base_dir .. "/include/"
 }
 links
 {
