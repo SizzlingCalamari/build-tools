@@ -1,8 +1,5 @@
 
 local incl_prefix, base_dir = ...
-print(incl_prefix)
-print(base_dir)
-print(base_dir .. "/src/**.cpp")
 
 project "flatbuffers"
     kind "StaticLib"
