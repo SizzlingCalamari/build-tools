@@ -1,5 +1,5 @@
 
-local incl_prefix, base_dir = ...
+local incl_prefix, files_prefix, base_dir = ...
 
 project "flatbuffers"
     kind "StaticLib"
@@ -14,8 +14,8 @@ project "flatbuffers"
     }
     files
     {
-        base_dir .. "/src/idl_parser.cpp",
-        base_dir .. "/src/idl_gen_text.cpp"
+        files_prefix .. base_dir .. "/src/idl_parser.cpp",
+        files_prefix .. base_dir .. "/src/idl_gen_text.cpp"
     }
 project "flatc"
     kind "ConsoleApp"
@@ -30,6 +30,6 @@ project "flatc"
     }
     files
     {
-        base_dir .. "/src/**.cpp"
+        files_prefix .. base_dir .. "/src/**.cpp"
     }
 project "*"

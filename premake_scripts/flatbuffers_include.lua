@@ -1,5 +1,5 @@
 
-local incl_prefix, base_dir = ...
+local incl_prefix, files_prefix, base_dir = ...
 
 includedirs
 {
