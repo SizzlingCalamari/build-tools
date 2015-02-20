@@ -1,11 +1,11 @@
 
-local incl_prefix, files_prefix, base_dir = ...
+local base_dir, output_dir = ...
 
 includedirs
 {
-    incl_prefix .. base_dir .. "/include/"
+    base_dir .. "/include/"
 }
 links
 {
-    "flatbuffers"
+    "_FlatBuffers"
 }

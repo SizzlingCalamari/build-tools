@@ -1,8 +1,9 @@
 
 local base_dir, output_dir = ...
 
-project "_FlatBuffers"
-    kind "StaticLib"
+project "_FlatC"
+    targetname "flatc"
+    kind "ConsoleApp"
     language "C++"
 
     includedirs
@@ -11,7 +12,6 @@ project "_FlatBuffers"
     }
     files
     {
-        base_dir .. "/src/idl_parser.cpp",
-        base_dir .. "/src/idl_gen_text.cpp"
+        base_dir .. "/src/**.cpp"
     }
 project "*"
