@@ -2,6 +2,7 @@
 local base_dir, output_dir = ...
 
 project "_SDL2"
+    targetname "SDL2"
     kind "SharedLib"
     files (base_dir.."/dummy.cpp")
 

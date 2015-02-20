@@ -5,11 +5,7 @@ includedirs
 {
     base_dir.."/include/"
 }
-dependson
-{
-    "_SDL2"
-}
 links
 {
-    "SDL2"
+    "_SDL2"
 }
