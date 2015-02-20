@@ -1,6 +1,12 @@
 
 local base_dir, output_dir = ...
 
+local build_command = ""
+if (os.get() == "windows") then
+    local msbuild = '"'..os.getenv("VS120COMNTOOLS")..'../../../MSBuild/12.0/Bin/MSBuild" "'
+    build_command = path.translate(msbuild..base_dir..'/VisualC/SDL/SDL_VS2013.vcxproj"')
+end
+
 project "_SDL2"
     targetname "SDL2"
     kind "SharedLib"
@@ -17,8 +23,6 @@ project "_SDL2"
             "{COPY} "..base_dir.."/build/.libs/libSDL2*%{cfg.buildtarget.extension}* "..output_dir
         }
     filter { "system:windows", "platforms:x32" }
-        local msbuild = '"'..os.getenv("VS120COMNTOOLS")..'../../../MSBuild/12.0/Bin/MSBuild" "'
-        local build_command = path.translate(msbuild..base_dir..'/VisualC/SDL/SDL_VS2013.vcxproj"')
         prebuildcommands
         {
             build_command.." /p:Configuration=Release /p:Platform=Win32"
