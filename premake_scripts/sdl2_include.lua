@@ -10,13 +10,18 @@ links
     "_SDL2"
 }
 filter "system:not windows"
-    postbuildcommands
+    prelinkcommands
     {
-        "{COPY} libSDL2* ../../../bin/"
+        "{COPY} "..base_dir.."/build/.libs/libSDL2*%{cfg.buildtarget.extension}* "..output_dir
     }
-filter "system:windows"
-    postbuildcommands
+filter { "system:windows", "platforms:x32" }
+    prelinkcommands
     {
-        "{COPY} SDL2.dll ../../../bin/"
+        "{COPY} "..base_dir.."/VisualC/SDL/Win32/Release/SDL2.* "..output_dir
+    }
+filter { "system:windows", "platforms:x64" }
+    prelinkcommands
+    {
+        "{COPY} "..base_dir.."/VisualC/SDL/x64/Release/SDL2.* "..output_dir
     }
 filter{}

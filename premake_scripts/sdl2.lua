@@ -1,5 +1,5 @@
 
-local base_dir, output_dir = ...
+local base_dir = ...
 
 local build_command = ""
 if (os.get() == "windows") then
@@ -18,27 +18,15 @@ project "_SDL2"
         {
             "{CHDIR} "..base_dir.."; [ -f Makefile ] || ./configure; make -j16"
         }
-        postbuildcommands
-        {
-            "{COPY} "..base_dir.."/build/.libs/libSDL2*%{cfg.buildtarget.extension}* "..output_dir
-        }
     filter { "system:windows", "platforms:x32" }
         prebuildcommands
         {
             build_command.." /p:Configuration=Release /p:Platform=Win32"
         }
-        postbuildcommands
-        {
-            "{COPY} "..base_dir.."/VisualC/SDL/Win32/Release/SDL2.* "..output_dir
-        }
     filter { "system:windows", "platforms:x64" }
         prebuildcommands
         {
             build_command.." /p:Configuration=Release /p:Platform=x64"
-        }
-        postbuildcommands
-        {
-            "{COPY} "..base_dir.."/VisualC/SDL/x64/Release/SDL2.* "..output_dir
         }
     filter {}
 project "*"

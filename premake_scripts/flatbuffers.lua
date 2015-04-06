@@ -1,5 +1,5 @@
 
-local base_dir, output_dir = ...
+local base_dir = ...
 
 project "_FlatBuffers"
     kind "StaticLib"
